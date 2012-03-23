@@ -70,16 +70,41 @@ create_dir ('/usr/share/backgrounds')
 create_dir ('/usr/share/backgrounds/swift')
 
 # Copy the wallpaper images to the Swift Linux wallpaper directory
-src = dir_develop + '/wallpaper/usr_share_backgrounds_swift/*'
+src = dir_develop + '/ui-config-wallpaper/usr_share_backgrounds_swift/*'
 dest = '/usr/share/backgrounds/swift'
 os.system ('cp ' + src + ' ' + dest)
 
+# Create the /home/(username)/.wallpaper directory
+create_dir (dir_user + '/.wallpaper')
+create_dir ('/etc/skel/.wallpaper')
+
+# Put the essential files in the /home/(username)/.wallpaper directory
+os.system ('cp ' + dir_develop + '/ui-config-wallpaper/home_user_dotwallpaper/* ' + dir_user + '/.wallpaper')
+os.system ('cp ' + dir_develop + '/ui-config-wallpaper/home_user_dotwallpaper/* ' + '/etc/skel/.wallpaper')
+
+src = dir_develop + '/ui-config-wallpaper/usr_local_bin/config-wallpaper-rox.py'
+dest = '/usr/local/bin/config-wallpaper-rox.py'
+os.system ('cp ' + src + ' ' + dest)
+
+src = dir_develop + '/ui-config-wallpaper/usr_local_bin/Rox-Wallpaper'
+dest = '/usr/local/bin/Rox-Wallpaper'
+os.system ('cp ' + src + ' ' + dest)
+os.system ('chmod a+rwx ' + dest)
+
 # Install yad
-# install_pkg_antix ('yad', chr(45) + '1_i386.deb', 'http://debs.slavino.sk/pool/main/y/yad/')
+install_pkg_antix ('yad', chr(45) + '1_i386.deb', 'http://debs.slavino.sk/pool/main/y/yad/')
 
 # Install feh
-# os.system ('apt-get install -y feh')
+os.system ('apt-get install -y feh')
 
+src = dir_develop + '/ui-config-wallpaper/home_user/dot_fehbg'
+dest = dir_user + '/.fehbg'
+os.system ('cp ' + src + ' ' + dest)
+
+if (is_chroot):
+    os.system ('chown -R mint:users ' + dir_user)
+else:
+    os.system ('chown -R ' + uname + ':users ' + dir_user)
 
 print 'FINISHED ADDING WALLPAPER WIZARD'
 print '================================'

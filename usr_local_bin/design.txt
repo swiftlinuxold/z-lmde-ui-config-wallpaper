@@ -1,0 +1,6 @@
+Select ROX or SLiM
+
+Select file (default directory: /usr/share/backgrounds/swift)
+
+LATER RELEASES:
+For ROX, select center/fill/scale
