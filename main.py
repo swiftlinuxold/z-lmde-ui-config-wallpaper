@@ -86,6 +86,10 @@ src = dir_develop + '/ui-config-wallpaper/usr_local_bin/config-wallpaper-rox.py'
 dest = '/usr/local/bin/config-wallpaper-rox.py'
 os.system ('cp ' + src + ' ' + dest)
 
+src = dir_develop + '/ui-config-wallpaper/usr_local_bin/config-wallpaper-lightdm.py'
+dest = '/usr/local/bin/config-wallpaper-lightdm.py'
+os.system ('cp ' + src + ' ' + dest)
+
 src = dir_develop + '/ui-config-wallpaper/usr_local_bin/Rox-Wallpaper'
 dest = '/usr/local/bin/Rox-Wallpaper'
 os.system ('cp ' + src + ' ' + dest)
