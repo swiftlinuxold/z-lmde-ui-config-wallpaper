@@ -1,9 +1,5 @@
 #!/usr/bin/env python
 
-# Purpose: allows the user to select a meathod for setting the wallpaper, 
-#          as well as a wallpaper / color / default folder based on their
-#          choice of options
-
 # This script is based on the /usr/local/bin/wallpaper.py script in antiX Linux.
 
 # Dependencies: feh, rox (pinboard), randwallpaper.sh, login_background.sh,
@@ -507,7 +503,7 @@ class Base:
       about.set_program_name("Desktop Wallpaper Wizard")
       about.set_version("")
       about.set_copyright("")
-      about.set_comments("This is a Swift Linux script for setting the wallpaper on the preinstalled window managers")
+      about.set_comments("This is a script for setting the wallpaper on the preinstalled window managers")
       about.set_website("http://www.swiftlinux.org")
       about.run()
       about.destroy()
