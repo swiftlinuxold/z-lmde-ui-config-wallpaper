@@ -45,19 +45,19 @@ text.close
 
 class Base:
     def change_wallpaper_lightdm (self, widget):
-		# Copy `cat $HOME/.wallpaper/saved` into /etc/lightdm/lightdm-gtk-greeter.conf
-		p = os.popen("cat $HOME/.wallpaper/lightdm")
-        filename_wallpaper = p.readline()
+        file_to_read = dir_user + '/.wallpaper/lightdm'
+        filename_wallpaper = open (file_to_read, 'r').read ()
         file_to_change = '/etc/lightdm/lightdm-gtk-greeter.conf'
         line_new = 'background=' + filename_wallpaper
-        import fileinput
+        import fileinput, sys
         for line in fileinput.input(file_to_change,inplace =1):
             line = line.strip()
             if not 'background=' in line:
-                print line 
+                result = line 
             else:
-                fileinput.write ('background=' + filename_wallpaper)
-                
+                result = line_new
+            print result
+
         
     
     def set (self, widget):
