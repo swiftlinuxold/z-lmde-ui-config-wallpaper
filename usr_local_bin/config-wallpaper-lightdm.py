@@ -45,6 +45,13 @@ text.close
 
 class Base:
     def change_wallpaper_lightdm (self, widget):
+        pic = file((SAVED), "w")
+        pic.write (IMAGE) 
+        pic.close()
+        pic = file((SETTYPE), "w")
+        pic.write ("static" )
+        pic.close()
+        
         file_to_read = dir_user + '/.wallpaper/lightdm'
         filename_wallpaper = open (file_to_read, 'r').read ()
         file_to_change = '/etc/lightdm/lightdm-gtk-greeter.conf'
