@@ -10,8 +10,8 @@ class Wizard:
     def __init__(self):
         
         self.window = gtk.Window(gtk.WINDOW_TOPLEVEL) # Create a new window
-        self.window.set_title("Software Installation Wizard") # Set the window title
-        self.window.set_border_width(20)# Sets the border width of the window.
+        self.window.set_title("Wallpaper Wizard") # Set the window title
+        #self.window.set_border_width(20)# Sets the border width of the window.
         self.window.resize (350,100)
         self.window.connect("delete_event", self.delete_event) # Click on the X -> close window
         
@@ -20,16 +20,16 @@ class Wizard:
         
         # EACH OPTION GETS ITS OWN HORIZONTAL BOX (wizard_option)
         
-        # OPTION 1: Synaptic
-        self.box_image = '/usr/share/synaptic/pixmaps/synaptic_32x32.xpm'
-        self.box_label = 'Synaptic'
-        self.box = self.wizard_option (self.box_image, self.box_label, self.synaptic)
+        # OPTION 1: Desktop Wallpaper Wizard
+        self.box_image = '/usr/share/icons/gTangish-2.0a1/32x32/apps/background.png'
+        self.box_label = 'Desktop Wallpaper Wizard'
+        self.box = self.wizard_option (self.box_image, self.box_label, self.rox)
         self.vbox.add (self.box)
         
-        # Option 2: Software Center
-        self.box_image = '/usr/lib/linuxmint/mintInstall/icon.svg'
-        self.box_label = 'Software Center'
-        self.box = self.wizard_option (self.box_image, self.box_label, self.software_center)
+        # Option 2: Login Screen Wallpaper Wizard
+        self.box_image = '/usr/share/icons/gTangish-2.0a1/32x32/apps/gdm.png'
+        self.box_label = 'Login Screen Wallpaper Wizard'
+        self.box = self.wizard_option (self.box_image, self.box_label, self.lightdm)
         self.vbox.add (self.box)
         
         # Show everything
@@ -45,11 +45,11 @@ class Wizard:
         gtk.main_quit()
         return False
         
-    def synaptic (self, widget, callback_data=None):
-        os.system ('gksu synaptic &')
+    def rox (self, widget, callback_data=None):
+        os.system ('python /usr/local/bin/config-wallpaper-rox.py &')
         
-    def software_center (self, widget, callback_data=None):
-        os.system ('gksu mintinstall &')
+    def lightdm (self, widget, callback_data=None):
+        os.system ('gksu python /usr/local/bin/config-wallpaper-lightdm.py &')
     
     def wizard_option (self, filename_image, string_label, fctn_action):
         # Horizontal box
