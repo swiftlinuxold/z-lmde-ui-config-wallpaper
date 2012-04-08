@@ -39,37 +39,6 @@ def create_dir (dir_to_create):
     if not (os.path.exists(dir_to_create)):
         os.mkdir (dir_to_create)
 
-def install_pkg_antix (name1, name2, url):
-    # First check for package
-    # Credit: http://stackoverflow.com/questions/3387961/check-if-a-package-is-installed
-    devnull = open (os.devnull,"w")
-    retval = subprocess.call(["dpkg","-s",name1],stdout=devnull,stderr=subprocess.STDOUT)
-    devnull.close()
-    i = 0
-    while (retval <> 0) and (i < 50):
-        os.system ('echo DOWNLOADING ' + name1 + ' FROM ' + url)
-        wget_command = 'wget -nv -nd -nH -r -l1 -q --no-parent -A '
-        deb_file = name1 + '_*' + name2
-        wget_command = wget_command + chr(39) + deb_file + chr(39) + ' '
-        wget_command = wget_command + url
-        os.system ('echo ' + wget_command)
-        os.system (wget_command)
-        os.system ('dpkg -i ' + deb_file)
-        os.system ('rm ' + deb_file)
-        os.system ('rm robot*')
-        devnull = open (os.devnull,"w")
-        retval = subprocess.call(["dpkg","-s",name1],stdout=devnull,stderr=subprocess.STDOUT)
-        devnull.close()
-        if (i > 3) and (retval <> 0):
-            os.system ('echo Installation not completed, will try again')
-            import time, random
-            sec = random.randrange (3,10)
-            time.sleep (sec)
-    if retval == 0:
-        os.system ('echo ' + name1 + ' is already installed')
-    else:
-        os.system ('echo WARNING: ' + name1 + ' is NOT installed')
-
 # Remove original Linux Mint wallpaper to save space
 print "REMOVING EXCESS WALLPAPERS"
 purge_packages ('mint-artwork-debian mint-backgrounds-debian mint-meta-debian')
@@ -118,7 +87,7 @@ os.system ('chmod a+rwx ' + dest)
 install_pkg_antix ('yad', chr(45) + '1_i386.deb', 'http://debs.slavino.sk/pool/main/y/yad/')
 
 # Install feh
-os.system ('apt-get install -y feh')
+os.system ('apt-get install -qq feh')
 
 src = dir_develop + '/ui-config-wallpaper/home_user/dot_fehbg'
 dest = dir_user + '/.fehbg'
