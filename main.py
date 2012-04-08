@@ -26,8 +26,8 @@ else:
 
 # THIS IS THE SCRIPT FOR ADDING THE SWIFT LINUX CONFIGURATION SCRIPTS
 
-print '============================='
-print 'BEGIN ADDING WALLPAPER WIZARD'
+os.system ('echo =============================')
+os.system ('echo BEGIN ADDING WALLPAPER WIZARD')
 
 import shutil, subprocess
 
@@ -95,5 +95,5 @@ if (is_chroot):
 else:
     os.system ('chown -R ' + uname + ':users ' + dir_user)
 
-print 'FINISHED ADDING WALLPAPER WIZARD'
-print '================================'
+os.system ('echo FINISHED ADDING WALLPAPER WIZARD')
+os.system ('echo ================================')
