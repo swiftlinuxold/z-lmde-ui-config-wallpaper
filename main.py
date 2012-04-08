@@ -83,9 +83,6 @@ dest = '/usr/local/bin/Rox-Wallpaper'
 os.system ('cp ' + src + ' ' + dest)
 os.system ('chmod a+rwx ' + dest)
 
-# Install yad
-install_pkg_antix ('yad', chr(45) + '1_i386.deb', 'http://debs.slavino.sk/pool/main/y/yad/')
-
 # Install feh
 os.system ('apt-get install -qq feh')
 
