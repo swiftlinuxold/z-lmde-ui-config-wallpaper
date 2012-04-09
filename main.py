@@ -40,12 +40,12 @@ def create_dir (dir_to_create):
         os.mkdir (dir_to_create)
 
 # Remove original Linux Mint wallpaper to save space
-print "REMOVING EXCESS WALLPAPERS"
+os.system ('echo REMOVING EXCESS WALLPAPERS')
 purge_packages ('mint-artwork-debian mint-backgrounds-debian mint-meta-debian')
 purge_packages ('mint-backgrounds-katya mint-backgrounds-katya-extra')
 
-print "ADDING SWIFT LINUX WALLPAPER"
 # Create directory for Swift Linux wallpaper
+os.system ('echo ADDING SWIFT LINUX WALLPAPER')
 dir_wallpaper='/usr/share/backgrounds/swift'
 create_dir ('/usr/share/backgrounds')
 create_dir ('/usr/share/backgrounds/swift')
