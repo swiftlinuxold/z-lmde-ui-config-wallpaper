@@ -84,6 +84,7 @@ os.system ('cp ' + src + ' ' + dest)
 os.system ('chmod a+rwx ' + dest)
 
 # Install feh
+os.system ('echo INSTALLING feh')
 os.system ('apt-get install -qq feh')
 
 src = dir_develop + '/ui-config-wallpaper/home_user/dot_fehbg'
