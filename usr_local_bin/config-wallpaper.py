@@ -11,7 +11,7 @@ class Wizard:
         
         self.window = gtk.Window(gtk.WINDOW_TOPLEVEL) # Create a new window
         self.window.set_title("Wallpaper Wizard") # Set the window title
-        #self.window.set_border_width(20)# Sets the border width of the window.
+        self.window.set_border_width(20)# Sets the border width of the window.
         self.window.resize (350,100)
         self.window.connect("delete_event", self.delete_event) # Click on the X -> close window
         
